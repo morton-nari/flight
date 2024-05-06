@@ -1,0 +1,7 @@
+<div class="d-flex align-items-center gap-2">
+    <label for="{{ label }}" class="lable-break">{{ label }}</label>
+    <input id="{{ label }}" class="form-control"
+        type="time" 
+        [(ngModel)]="selectedTimeValue"
+        (ngModelChange)="onTimeChange($event)"  >
+</div>
