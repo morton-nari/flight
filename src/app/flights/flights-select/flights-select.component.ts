@@ -37,9 +37,7 @@ export class FlightsSelectComponent implements AfterViewInit {
 
   personChange$ = new Subject<string>();
   rpaChange$ = new Subject<string>();
-
   addItem$ = new Subject<void>();  // Subject for the Add button
-
   selectedItems$ = new BehaviorSubject<string[]>([]);
 
   ngAfterViewInit() {
@@ -75,10 +73,6 @@ readonly personList$ = this.flightsService.personList$
       return EMPTY
     })
   )
-  addFlight() {
-    console.log('Selected time:', this.endTimeMinCount, this.startTimeMinCount);
-      
-  }
 
   onPersonChange(event: Event) {
     const value = (event.target as HTMLSelectElement).value;
@@ -89,10 +83,6 @@ readonly personList$ = this.flightsService.personList$
     const value = (event.target as HTMLSelectElement).value;
     this.rpaChange$.next(value);
   }
-
-  // formatTime(time: number): string {
-  //   return time < 10 ? `0${time}` : `${time}`;
-  // }
 
   addItemToList() {
     this.addItem$.next();
