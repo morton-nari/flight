@@ -31,7 +31,7 @@ export class FlightsListComponent implements OnInit{
   groupData(data:Flights[]) {
     const groupedMap = new Map<string, { person: string;  duration: number; count: number }>();
     data.forEach(obj => {
-      const key = JSON.stringify({ person: obj.pilot, duration: obj.duration });
+      const key = JSON.stringify({ person: obj.person, duration: obj.duration });
       if (groupedMap.has(key)) {
         const value = groupedMap.get(key);
         if (value) {
@@ -39,7 +39,7 @@ export class FlightsListComponent implements OnInit{
         }
         
       } else {
-        groupedMap.set(key, { person: obj.pilot, duration: obj.duration, count: 1 });
+        groupedMap.set(key, { person: obj.person, duration: obj.duration, count: 1 });
       }
     });
 
