@@ -2,10 +2,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, inject } from 
 import { AsyncPipe,NgClass, NgFor, NgIf } from '@angular/common';
 import { FlightsService } from '../flights.service';
 import { BehaviorSubject, EMPTY, Subject, catchError, combineLatest, map, tap, withLatestFrom } from 'rxjs';
-
 import {  ReactiveFormsModule } from '@angular/forms';
 import { TimeSelectionComponent } from '../time-selection/time-selection.component';
-
 import { FlightShowComponent } from '../flight-show/flight-show.component';
 
 

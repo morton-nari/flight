@@ -15,7 +15,7 @@ import { TimeFormatPipe } from 'src/app/utilities/time-format.pipe';
 export class FlightListRpaComponent {
   private flightsService = inject(FlightsService);
   errorMessage:string = '';
-  groupedData: {person: string; rpa: string; duration: number; count: number }[] = [];
+  groupedData: { rpa: string; duration: number; count: number }[] = [];
   readonly selectedValues$ = this.flightsService.selectedValues$
   .pipe(
     catchError(err => {
@@ -29,9 +29,9 @@ export class FlightListRpaComponent {
     ).subscribe( x => this.groupData(x))
   }
   groupData(data:Flights[]) {
-    const groupedMap = new Map<string, { person: string; rpa: string; duration: number; count: number }>();
+    const groupedMap = new Map<string, { rpa: string; duration: number; count: number }>();
     data.forEach(obj => {
-      const key = JSON.stringify({person: obj.pilot, rpa: obj.RPA, duration: obj.duration });
+      const key = JSON.stringify({ rpa: obj.RPA, duration: obj.duration });
       if (groupedMap.has(key)) {
         const value = groupedMap.get(key);
         if (value) {
@@ -39,7 +39,7 @@ export class FlightListRpaComponent {
         }
         
       } else {
-        groupedMap.set(key, {person: obj.pilot, rpa: obj.RPA, duration: obj.duration, count: 1 });
+        groupedMap.set(key, { rpa: obj.RPA, duration: obj.duration, count: 1 });
       }
     });
 

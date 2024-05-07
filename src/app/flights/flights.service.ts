@@ -35,7 +35,7 @@ export class FlightsService {
     updateSelectedValues(flights: Flights[]) {
       this.selectedValuesSubject.next(flights);
     }
-    addNewFlight(rpa:string, person:string, startMinCount: number, endMinCount: number){
+    addNewFlight(person:string,rpa:string,  startMinCount: number, endMinCount: number){
       console.log(rpa, person);
       const newFlight = new Flights(person, rpa, startMinCount,endMinCount);
       this.selectedValuesSubject.next([...this.selectedValuesSubject.value, newFlight]);
