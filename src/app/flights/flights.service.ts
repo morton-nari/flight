@@ -20,14 +20,12 @@ export class FlightsService {
 
   readonly personList$ = this.http.get<PersonList[]>(this.personUrl)
   .pipe(
-    tap(p => console.log(JSON.stringify(p))),
     shareReplay(1),
     catchError(err => this.handleError(err))
     );
  
   readonly rpaList$ = this.http.get<RpaList[]>(this.rpaUrl)
   .pipe(
-    tap(rpa => console.log(JSON.stringify(rpa))),
     shareReplay(1),
     catchError(err => this.handleError(err))
     );
@@ -36,7 +34,6 @@ export class FlightsService {
       this.selectedValuesSubject.next(flights);
     }
     addNewFlight(person:string,rpa:string,  startMinCount: number, endMinCount: number){
-      console.log(rpa, person);
       const newFlight = new Flights(person, rpa, startMinCount,endMinCount);
       this.selectedValuesSubject.next([...this.selectedValuesSubject.value, newFlight]);
     }
